@@ -1,0 +1,35 @@
+name: Deploy 
+on: 
+  push:
+    branches:
+      - main
+jobs: 
+  build:
+    runs-on: ubuntu-22.04 
+    steps:
+      - name: Checkout source code. 
+        uses: actions/checkout@v2
+      - name: Check Node v 
+        run: node -v
+      - name: Install Dependencies 
+        run: yarn install --frozen-lockfile
+      - name: Build 
+        run: yarn build
+      - name: zip create 
+        run: zip -qq -r ./test-build.zip . 
+        shell: bash
+      - name: Configure AWS credentials 
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: AKIAQRBFFWKTJGPWXEVY
+          aws-secret-access-key: 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
+          aws-region: ap-northeast-2
+      - name: Upload to S3 # zip 파일을 S3에 업로드.
+        run: | # S3 버킷 이름.
+          aws s3 cp --region ap-northeast-2 ./test-build.zip s3://test-s3-highjoon/test-build.zip
+      - name: Deploy # S3에 올라간 zip 파일을 CodeDeploy를 통해 가져온다..
+        run: aws deploy create-deployment
+          --application-name nia-front 
+          --deployment-config-name CodeDeployDefault.AllAtOnce 
+          --deployment-group-name nia-instance-front #
+          --s3-location bucket=test-s3-ysm,bundleType=zip # Code Deploy가 S3에서 프로젝트를 찾을 수 있도록 경로 지정. (bucket=버킷 이름/test-build.zip)
