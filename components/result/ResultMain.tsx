@@ -9,12 +9,9 @@ import ResultTable from './table/ResultTable';
 
 //Recoil
 import { showToastState, modalInputFormState,  tableDataState } from '../../data/recoil/atoms';
-import { columnsSelector } from '../../data/recoil/selector';
+import { columnsSelector } from '@/data/recoil/Selector';
 import { selector, useRecoilValue, useRecoilState } from 'recoil';
 
-
-/** react-table */
-import { useTable, useSortBy, useFilters } from 'react-table';
 
 
 //오류 발생시 Toast 팝업, 전송완료시 팝업 작업
