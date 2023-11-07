@@ -10,7 +10,7 @@ import { useFormContext, Controller } from "react-hook-form";
 //실내외 리스트
 import { inoutList } from '../../../data/InoutList';
 
-export default function sido() {
+export default function Sido() {
 
     //useForm 값 넘기기
     const { control, watch, setValue } = useFormContext();
@@ -34,8 +34,8 @@ export default function sido() {
                 className="block w-full h-10 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
                 {...field}
             >
-                {inoutList.map((item: any) => (
-                    <option>{item}</option>))}
+                {inoutList.map((item: any, index: any) => (
+                    <option key={index}>{item}</option>))}
             </select>)}/>            
         </div>
     )

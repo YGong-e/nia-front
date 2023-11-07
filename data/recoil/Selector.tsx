@@ -1,7 +1,7 @@
 import { selector } from 'recoil';
 import { tableShowModalState, tableDataState } from './atoms';
 
-import _ from 'lodash';
+// import _ from 'lodash';
 
 // 변환된 데이터를 반환하는 selector 정의
 export const columnsSelector = selector({
@@ -95,7 +95,7 @@ export const tableShowModalSelector = selector({
     const tableShowModal = get(tableShowModalState);
     const tableData = get(tableDataState);
     
-    return _.filter(tableData, {keyIndex : tableShowModal.index})
+    return tableData.filter((item:any) => item.keyIndex == tableShowModal.index)
     
 
   }

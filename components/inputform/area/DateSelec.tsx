@@ -23,7 +23,7 @@ import "./customDatePickerWidth.css";
 //지역 리스트 받아오기
 const areaJson = areaList;
 
-export default function sido() {
+export default function Sido() {
 
 
   //useForm 값 넘기기

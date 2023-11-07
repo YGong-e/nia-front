@@ -11,7 +11,7 @@ import { useFormContext, Controller } from "react-hook-form";
 
 import { teamList } from '../../../data/TeamList';
 
-export default function sido() {
+export default function Sido() {
 
     //useForm 값 넘기기
     const { control, setValue } = useFormContext();
@@ -35,8 +35,8 @@ export default function sido() {
                     className="block w-full h-10 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
                     { ...field }
                 >
-                    {teamList.map((item: string) => (
-                        <option>{item}</option>))}
+                    {teamList.map((item: string, index: any) => (
+                        <option key = {index}>{item}</option>))}
                 </select>)} />
                 </div>
     )

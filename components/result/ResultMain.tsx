@@ -4,6 +4,7 @@ import { areaList } from '../../data/AreaList';
 import '../globals.css';
 import React, { useState, useEffect } from 'react';
 
+import Header from '../Header';
 import ResultTable from './table/ResultTable';
 
 
@@ -21,7 +22,7 @@ import OnSubmitPopup from '../popup/OnSubmitPopup'
 //지역 리스트 받아오기
 const areaJson = areaList;
 
-export default function areaSelect() {
+export default function AreaSelect() {
 
 const [showToast, setShowToast] = useRecoilState(showToastState);
 
@@ -32,6 +33,7 @@ const columns = useRecoilValue(columnsSelector);
 
   return (
     <div>
+      <Header/>
       <ResultTable/>      
       <ToastPopup/>
     </div>

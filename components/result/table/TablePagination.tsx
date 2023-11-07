@@ -15,7 +15,7 @@ import { selector, useRecoilValue, useRecoilState } from 'recoil';
 import { TableState } from '@tanstack/react-table';
 
 //lodash
-import _ from 'lodash';
+// import _ from 'lodash';
 
 /** icons */
 import { FaSortUp, FaSortDown, FaSort } from "react-icons/fa";

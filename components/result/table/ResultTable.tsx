@@ -31,7 +31,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 
 //lodash
-import _ from 'lodash';
+// import _ from 'lodash';
 
 /** icons */
 import { FaSortUp, FaSortDown, FaSort } from "react-icons/fa";
@@ -60,6 +60,7 @@ const GlobalFilter = () => {
 
   });
 
+  /**컬럼리스트불러오기 */
   const columns = tableCols;
 
   // useReactTable로 테이블 구조 정의

@@ -13,7 +13,7 @@ import { useRecoilState } from 'recoil';
 import { OCRValueState } from '@/data/recoil/atoms';
 import { getOcr } from '@/services/GetOcr';
 
-export default function sido() {
+export default function Sido() {
 
   //recoil값 받아오기 
   const [OCRvalue, setOCRvalue] = useRecoilState(OCRValueState);

@@ -24,7 +24,7 @@ import { log } from 'console';
 //지역 리스트 받아오기
 const areaJson = areaList;
 
-export default function sido() {
+export default function Sido() {
 
     //useForm 값 넘기기
     const { control, watch, setValue, getValues } = useFormContext();
@@ -34,9 +34,11 @@ export default function sido() {
     /**현재 위치기반 위치 업데이트 */
     const [formLocation, setFormLocation] = useRecoilState<formLocationType>(formLocationState);
     useEffect(() => {
-        if (formLocation) {
+        let checkVal = false;
+        if (formLocation && !checkVal) {
             console.log('formLocation.dong :', formLocation.dong);
             setValue('dong', formLocation.dong)
+            checkVal = true;
         }
     }, [formLocation]);
 
@@ -57,7 +59,11 @@ export default function sido() {
     }
 
     useEffect(() => {
+        let checkval = false;
+        if(!checkval) {
+            checkval = true;
         getSido();
+        }
     }, [getValues]);
 
     getSido();

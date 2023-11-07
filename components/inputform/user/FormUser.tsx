@@ -25,7 +25,7 @@ const inputTitle = [{
 //지역 리스트 받아오기
 const areaJson = areaList;
 
-export default function areaSelect() {
+export default function AreaSelect() {
 
     const { control, watch, setValue } = useFormContext();
 
@@ -37,10 +37,10 @@ export default function areaSelect() {
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1 lg:grid-cols-1">
                 {
                     inputTitle.map((item) => (
-                        <div>
+                        <div key={item.key}>
                             <Controller
                                 control={control}
-                                name={item.key}
+                                name={item.key}                                
                                 // render를 사용해서, field값을 복사하거나 꺼내 쓰면 된다.
                                 // field안에는 value나 onBlur와 같은 함수도 있음
                                 // render안의 onChange를 조작해, onChange안에 들어갈 값을

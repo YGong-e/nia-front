@@ -15,7 +15,7 @@ import { tableShowModalSelector } from '../../../data/recoil/Selector';
 import { useQuery, useMutation, QueryClient, useQueryClient } from '@tanstack/react-query';
 
 //lodash
-import _ from 'lodash';
+// import _ from 'lodash';
 
 /** icons */
 import { FaSortUp, FaSortDown, FaSort } from "react-icons/fa";

@@ -4,7 +4,8 @@ import { areaList } from '../../data/AreaList';
 import '../globals.css';
 import React, { useState, useEffect } from 'react';
 
-
+/** header */
+import Header from '../Header';
 //Recoil
 import { showToastState, modalInputFormState, inputFormDataState, OCRValueState } from '../../data/recoil/atoms';
 import { useRecoilState } from 'recoil';
@@ -41,7 +42,7 @@ import { getTodayDate } from '@/utils/GetTodayDate';
 //지역 리스트 받아오기
 const areaJson = areaList;
 
-export default function areaSelect() {
+export default function AreaSelect() {
 
   const [showToast, setShowToast] = useRecoilState(showToastState);
   const [modalInputForm, setModalInputForm] = useRecoilState(modalInputFormState);
@@ -81,16 +82,14 @@ export default function areaSelect() {
   //   setInputFormData(newData);
   // }
 
-
-
-
-
   useEffect(() => {
     console.log('Name:', watchInputData);
   }, [watchInputData]);
 
 
   return (
+    <>
+    <Header/>
     <form>
       <FormProvider {...methods}>
         <FormImage />
@@ -109,7 +108,7 @@ export default function areaSelect() {
         {modalInputForm && <OnSubmitPopup />}
       </FormProvider>
       <ToastPopup />
-
     </form>
+    </>
   )
 }

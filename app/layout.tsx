@@ -1,6 +1,6 @@
-import '../components/globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import Footer from '../components/Footer';
 
 
@@ -25,13 +25,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} max-w-3xl mx-auto flex flex-col min-h-screen`}>  
-      <div className = 'container'>  
-        <Recoil>
-          <ReactQuery >{children}</ReactQuery>
-        </Recoil>
-        <ReactHotToast />
-        </div>
+      <body className={`h-screen ${inter.className} max-w-3xl mx-auto mb-0 px-4 flex flex-col justify-between`}>       
+
+        <main className="mb-auto h-screen">
+          <Recoil>
+            <ReactQuery >{children}</ReactQuery>
+          </Recoil>
+          <ReactHotToast />
+        </main>
         <Footer />
       </body>
     </html>

@@ -6,7 +6,7 @@ import FormMain from '../../components/inputform/FormMain';
 
 export default function formMain() {
     return (
-            <div className="space-y-12">
+            <div className="space-y-12 pb-40">
                 <FormMain />              
             </div>
     )

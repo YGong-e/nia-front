@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 const PhotoUploadForm = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleImageChange = (event) => {
-    // const file = event.target.files[0];
-    // if (file) {
-    //   setSelectedImage(URL.createObjectURL(file));
-    // }
-  };
+  // const handleImageChange = (event:any) => {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     setSelectedImage(URL.createObjectURL(file));
+  //   }
+  // };
 
   return (
     <div className="flex flex-col items-center p-8">
@@ -29,7 +29,7 @@ const PhotoUploadForm = () => {
       <input
         type="file"
         accept="image/*"
-        onChange={handleImageChange}
+        // onChange={handleImageChange}
         className="py-2 px-4 bg-blue-500 text-white rounded-md cursor-pointer"
       />
     </div>

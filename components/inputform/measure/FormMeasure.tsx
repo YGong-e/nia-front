@@ -23,7 +23,7 @@ import Inout from './Inout';
 //지역 리스트 받아오기
 const areaJson = areaList;
 
-export default function areaSelect() {
+export default function AreaSelect() {
 
     const { control, watch, setValue } = useFormContext();
 
@@ -62,8 +62,8 @@ export default function areaSelect() {
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1 lg:grid-cols-1">
                 {
-                    inputTitle.map((item) => (
-                        <div>
+                    inputTitle.map((item:any, index: any) => (
+                        <div key ={index}>
                             <Controller
                                 control={control}
                                 name={item.key}

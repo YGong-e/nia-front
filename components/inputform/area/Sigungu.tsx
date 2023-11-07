@@ -18,7 +18,6 @@ import { useRecoilState } from 'recoil';
 //시군구읍면동 리스트
 import { areaList } from '../../../data/AreaList';
 import { log } from 'console';
-import { Button } from '@mui/material';
 
 interface propsType {
     control: any;
@@ -29,7 +28,7 @@ interface propsType {
 //지역 리스트 받아오기
 const areaJson = areaList;
 
-export default function sido() {
+export default function Sido() {
 
     //useForm 값 넘기기
     const { control, watch, setValue, getValues } = useFormContext();
@@ -38,9 +37,11 @@ export default function sido() {
     /**현재 위치기반 위치 업데이트 */
     const [formLocation, setFormLocation] = useRecoilState<formLocationType>(formLocationState);
     useEffect(() => {
-        if(formLocation){
+        let checkval = false;
+        if(formLocation && !checkval){
             console.log('ormLocation :',formLocation);
         setValue('sigungu', formLocation.sigungu)
+        checkval = true;
         }
     }, [formLocation]);
 

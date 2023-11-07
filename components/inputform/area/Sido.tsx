@@ -20,7 +20,7 @@ import useGeoLocation from "@/services/UseGeolocation";
 //지역 리스트 받아오기
 const areaJson = areaList;
 
-export default function sido() {
+export default function Sido() {
 
     //useForm 값 넘기기
     const { control, watch, setValue, getValues } = useFormContext();
@@ -37,9 +37,11 @@ export default function sido() {
     /**현재 위치기반 위치 업데이트 */
     const [formLocation, setFormLocation] = useRecoilState<formLocationType>(formLocationState);
     useEffect(() => {
-        if (formLocation) {
+        let checkval = false;
+        if (formLocation && !checkval) {
             console.log('formLocation.sido :', formLocation.sido, ':');          
-            setValue('sido', formLocation.sido);            
+            setValue('sido', formLocation.sido);     
+            checkval = true;       
         }
     }, [formLocation]);
 
@@ -65,7 +67,7 @@ export default function sido() {
                             선택
                         </option>
                         {areaJson.map((item: any) => (
-                            <option>{item.sido}</option>))}
+                            <option key = {item.sido}>{item.sido}</option>))}
                     </select>)} />
         </div>
     )

@@ -26,7 +26,7 @@ import Date from './DateSelec';
 //지역 리스트 받아오기
 const areaJson = areaList;
 
-export default function areaSelect() {
+export default function AreaSelect() {
 
     
     const { control, watch, setValue } = useFormContext();

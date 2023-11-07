@@ -15,7 +15,8 @@ const useGeolocation = () => {
   // 성공에 대한 로직
   const onSuccess = (location: { coords: { latitude: number; longitude: number; }; }) => {
     console.log(';location.coords.longitude', location.coords.longitude);
-
+    console.log('성공?');
+    
     setLocation({
       loaded: true,
       coordinates: {
@@ -27,8 +28,9 @@ const useGeolocation = () => {
 
   // 에러에 대한 로직
   const onError = (error: { code: number; message: string; }) => {
+    console.log('실패?');
     setLocation({
-      loaded: true,
+      loaded: false,
       error,
     })
   }
@@ -99,9 +101,13 @@ const useGeolocation = () => {
   //
 
   useEffect(() => {
+    let getHangjundongCheck = false;
     getlatlng();
-    if (location.loaded) {
+    console.log("로케이션이뭔데", location);
+    
+    if (location.loaded && !getHangjundongCheck) {
       getAdministrativeDivision();
+      getHangjundongCheck = true;
     }
   }, [location])
 
