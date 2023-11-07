@@ -93,7 +93,7 @@ const GlobalFilter = () => {
                   <TableHeader header={header} key={header.id} />
                 ))}
               </tr>
-            ))}
+            ))} 
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {resultTable.getRowModel().rows.map((row) => (
