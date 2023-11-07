@@ -1,0 +1,1 @@
+export const inoutList : string[] = ['실외', '실내']

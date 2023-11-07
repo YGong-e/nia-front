@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* html,
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  height: 60px;
+  background-color: #e9eaed;
+}
+
+.container {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+} */
+
+/* 
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.container {
+  min-height: 100vh;
+  position: relative;
+} */
+/* 
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+} */
+
+
+
+
+/* table {
+  width: 100%;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  background-color: #fff;
+  font-size: 14px;
+}
+tfoot {
+  background-color: #eee;
+}
+th,
+td {
+  position: relative;
+  padding: 10px 14px;
+  border-right: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+th,
+td:last-child {
+  border-right: none;
+}
+th {
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  background-color: #eee;
+} */
+

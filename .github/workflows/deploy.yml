@@ -1,0 +1,47 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  S3_BUCKET_NAME: dev-recruit.mash-up.kr
+  CODE_DEPLOY_APPLICATION_NAME: dev-recruit-code-deploy
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: dev-recruit
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build next app
+        run: yarn build
+
+      - name: Make zip file
+        run: zip -qq -r ./$GITHUB_SHA.zip . -x "node_modules/*"
+        shell: bash
+      - name: Configure AWS credentials 
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: AKIAQRBFFWKTJGPWXEVY
+          aws-secret-access-key: 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
+          aws-region: ap-northeast-2
+      - name: Upload to S3 
+        run: | 
+          aws s3 cp --region ap-northeast-2 ./test-build.zip s3://test-s3-ysm/test-build.zip
+      - name: Deploy 
+        run: aws deploy create-deployment
+          --application-name nia-front 
+          --deployment-config-name CodeDeployDefault.AllAtOnce 
+          --deployment-group-name nia-instance-front 
+          --s3-location bucket=test-s3-ysm,bundleType=zip 
