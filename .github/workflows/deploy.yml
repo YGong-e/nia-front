@@ -6,9 +6,9 @@ on:
       - main
 
 env:
-  S3_BUCKET_NAME: dev-recruit.mash-up.kr
-  CODE_DEPLOY_APPLICATION_NAME: dev-recruit-code-deploy
-  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: dev-recruit
+  S3_BUCKET_NAME: nia-bucket-ysm
+  CODE_DEPLOY_APPLICATION_NAME: nia-front
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: nia-instance-front
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
 
       - name: Build next app
         run: yarn build
@@ -30,18 +30,18 @@ jobs:
       - name: Make zip file
         run: zip -qq -r ./$GITHUB_SHA.zip . -x "node_modules/*"
         shell: bash
-      - name: Configure AWS credentials 
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: AKIAQRBFFWKTJGPWXEVY
-          aws-secret-access-key: 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
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_PRIVATE_ACCESS_KEY }}
           aws-region: ap-northeast-2
       - name: Upload to S3 
-        run: | 
-          aws s3 cp --region ap-northeast-2 ./test-build.zip s3://test-s3-ysm/test-build.zip
+        run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://nia-bucket-ysm/$GITHUB_SHA.zip
       - name: Deploy 
-        run: aws deploy create-deployment
-          --application-name nia-front 
-          --deployment-config-name CodeDeployDefault.AllAtOnce 
-          --deployment-group-name nia-instance-front 
-          --s3-location bucket=test-s3-ysm,bundleType=zip 
+        run: | 
+          aws deploy create-deployment \
+          --deployment-config-name CodeDeployDefault.AllAtOnce \
+          --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \
+          --deployment-group-name ${{ env.CODE_DEPLOY_DEPLOYMENT_GROUP_NAME }} \
+          --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$GITHUB_SHA.zip
