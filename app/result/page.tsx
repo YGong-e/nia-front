@@ -4,7 +4,7 @@ import ResultMain from '../../components/result/ResultMain';
 
 export default function resultMain() {
     return (
-            <div className="space-y-12">
+            <div className="space-y-12 pb-40">
                 <ResultMain />              
             </div>
     )
