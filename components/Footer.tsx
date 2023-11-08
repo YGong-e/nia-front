@@ -11,7 +11,7 @@ export default function Footer() {
                     <div className="clickable-area flex flex-col items-center text-indigo cursor-pointer hover:text-indigo-500">
                         <FaHome className="icon mt-4" size={24} />
                         <div>메인화면</div>
-                    </div>
+                    </div> 
                 </Link>
 
                 {/* 두 번째 클릭 영역 */}
