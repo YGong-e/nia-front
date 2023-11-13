@@ -199,12 +199,17 @@ export const formLocationState = atom<formLocationType>({
 })
 
 /** 위치 정보 받아온후 값 받아오기 */
-
-
-
 export const headerNameState = atom<any>({
   key: 'headerName',
   default: ''
+
+})
+
+
+
+export const hangjundongCheckState = atom<boolean>({
+  key: 'hangjundongCheck',
+  default: false
 
 })
 

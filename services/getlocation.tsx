@@ -21,7 +21,7 @@ interface KakaoMapResponse {
 const getlocation = () => {
   const [adminDivision, setAdminDivision] = useRecoilState(adminDivisionState);
   const [geoLocation, setGeoLocation] = useRecoilState(geoLocationState);
-  const [formLocation, setFormLocation] = useRecoilState(formLocationState);
+  // const [formLocation, setFormLocation] = useRecoilState(formLocationState);
 
 
   const getAdministrativeDivision = async () => {

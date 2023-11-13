@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 /** Recoil */
 //Recoil
-import { geoLocationState, adminDivisionState, formLocationState, formLocationType } from '@/data/recoil/atoms';
+import { geoLocationState, adminDivisionState, formLocationState, formLocationType, hangjundongCheckState } from '@/data/recoil/atoms';
 import { useRecoilState } from 'recoil';
 
 const KAKAO_MAP_API_KEY = '846aac33246283abdf58dae285603275';
@@ -11,6 +11,7 @@ const useGeolocation = () => {
   const [location, setLocation] = useRecoilState(geoLocationState);
   const [adminDivision, setAdminDivision] = useRecoilState(adminDivisionState);  
   const [formLocation, setFormLocation] = useRecoilState<formLocationType>(formLocationState);   
+  const [hangjundongCheck, setHangjundongCheck] = useRecoilState(hangjundongCheckState);
 
   // 성공에 대한 로직
   const onSuccess = (location: { coords: { latitude: number; longitude: number; }; }) => {
@@ -101,13 +102,12 @@ const useGeolocation = () => {
   //
 
   useEffect(() => {
-    let getHangjundongCheck = false;
     getlatlng();
     console.log("로케이션이뭔데", location);
     
-    if (location.loaded && !getHangjundongCheck) {
+    if (location.loaded && !hangjundongCheck) {
       getAdministrativeDivision();
-      getHangjundongCheck = true;
+      setHangjundongCheck(true);
     }
   }, [location])
 

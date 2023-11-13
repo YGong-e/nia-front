@@ -27,9 +27,6 @@ export default function Sido() {
       getOcr(file, setOCRvalue);
 
       console.log(OCRvalue);
-
-
-
     }
   }
 
